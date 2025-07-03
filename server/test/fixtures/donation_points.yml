@@ -1,0 +1,32 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# == Schema Information
+#
+# Table name: donation_points
+#
+#  id            :integer          not null, primary key
+#  contact_email :string
+#  contact_name  :string
+#  contact_phone :string
+#  description   :text
+#  name          :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+# Indexes
+#
+#  index_donation_points_on_name  (name) UNIQUE
+#
+one:
+  name: MyString
+  description: MyText
+  contact_name: MyString
+  contact_phone: MyString
+  contact_email: MyString
+
+two:
+  name: MyString
+  description: MyText
+  contact_name: MyString
+  contact_phone: MyString
+  contact_email: MyString
