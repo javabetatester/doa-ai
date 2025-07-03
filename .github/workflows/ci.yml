@@ -16,8 +16,8 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: .ruby-version
           bundler-cache: true
+          working-directory: server
 
       - name: Scan for common Rails security vulnerabilities using static analysis
         run: bin/brakeman --no-pager
@@ -32,12 +32,16 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: .ruby-version
           bundler-cache: true
+          working-directory: server
 
       - name: Lint code for consistent style
-        run: bin/rubocop -f github
-        working-directory: server
+        uses: reviewdog/action-rubocop@v2.21.3
+        with:
+          reporter: github-pr-check
+          skip_install: true
+          use_bundler: true
+          workdir: server
 
   test:
     runs-on: ubuntu-24.04
@@ -51,8 +55,8 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: .ruby-version
           bundler-cache: true
+          working-directory: server
 
       - name: Run tests
         env:
